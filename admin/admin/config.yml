@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+site_url: https://friendly-hotteok-5566b3.netlify.app
+display_url: https://friendly-hotteok-5566b3.netlify.app
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "updates"
+    label: "Updates"
+    files:
+      - name: "updates"
+        label: "Updates Feed"
+        file: "updates.json"
+        description: "Add, edit, or remove the posts shown on the Updates page."
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            label_singular: "Post"
+            summary: "{{title}} — {{date}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+              - { label: "Photo / Image", name: "image", widget: "image", required: false }
+              - { label: "Video URL (YouTube or TikTok link)", name: "video_url", widget: "string", required: false }
+              - { label: "Short summary (shown on the card)", name: "excerpt", widget: "text" }
+              - { label: "Full update text", name: "body", widget: "text" }
